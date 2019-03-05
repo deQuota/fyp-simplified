@@ -1,0 +1,125 @@
+.login-background-image {
+  /*height: 500px;*/
+  background-position: left;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #e2e9ed;
+  font-family: lato;
+  overflow-y: hidden;
+  background-image: url("../../assets/images/login_background.jpg");
+}
+.background-image-no-file h1{
+  font-family: Catamaran;
+    font-weight: bold;
+    line-height: 1;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    font-weight: bold;
+    top: 500px;
+    left: 115px;
+    width: 529px; 
+}
+.no-file-notice{
+  
+}
+.moto {
+  position: absolute;
+  top: 90px;
+  left: 115px;
+  width: 529px; 
+}
+.moto h1 {
+    font-family: Catamaran;
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: left;
+    color: #ffffff;
+     }
+.moto .sub-moto h4 {
+    font-family: Roboto;
+    font-size: 16px;
+    text-align: left;
+    color: #e3e3e3; 
+}
+.file-uploader{
+position: absolute;
+  top: 275px;
+  left: 115px;
+  width: 529px; 
+}
+.uploading-spinner{
+  position: absolute;
+  top: 145px;
+  left: 150px;
+  width: 529px; 
+}
+.content{
+  color: #20c997;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+}
+.file-name{
+  font-family: Catamaran;
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: left;
+    color: #ffffff;
+}
+​.navbar-fixed-top {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    top: 0;
+}
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.9;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 0.7;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #20c997;
+  cursor: pointer;
+}
+
+.chart{
+  height: 320px;
+  background: white;
+  /*color: #313c47;*/
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 20px;
+}
+
+.bar-chart{
+  height: 250px;
+  background: white;
+  /*color: #313c47;*/
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 20px;
+}

@@ -1,0 +1,170 @@
+<nav class="navbar navbar-dark bg-primary fixed-top" style="z-index: 1">
+  <a class="navbar-brand" href="#">Forecasting Tool</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" (click)="genImage()">Get PDF<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
+
+<div class="login-background-image" [style.height]="uploaded == false ? '1024px' : '500px'">
+  <div class="moto">
+        <h1>Investing made simple for everyone</h1>
+    <div class="sub-moto">
+        <h4>technical and fundamental analysis tool which will educate you and guide you towards making the most out of your investment
+                    fund
+
+        </h4>
+    </div>
+  </div>
+  
+  <div class="file-uploader">
+    <file-drop headertext="{{(relativePath == 'Drop files here'?'Drop files here':relativePath)}}" (onFileDrop)="dropped($event)" 
+    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+    </file-drop>
+    <div class="upload-table">
+       
+    </div>
+    <br>
+    <div *ngIf="!uploaded" class="uploading-spinner float-right">
+      <ngx-spinner
+      bdOpacity = 0.1
+      bdColor = "rgba(51,51,51,0)"
+      size = "small"
+      color = "#fff"
+      type = "ball-grid-pulse"
+      fullScreen = "false">
+      </ngx-spinner>
+    </div>
+    <button *ngIf="!uploaded" style="width: 100px" class="btn btn-success float-right" [disabled]="!selectedFile" (click)="upload()">{{buttonStatus}}
+      
+    </button>
+    <button *ngIf="uploaded" style="width: 100px" class="btn btn-success float-right" [disabled]="true">Uploaded
+      
+    </button>
+  </div>
+
+
+
+  <div class="sections" *ngIf="!uploaded">
+ 	<div class="background-image-no-file">
+        <div class="no-file-notice">
+            <h1>Upload your files above</h1>
+        </div>
+     </div>
+  </div>
+
+
+
+</div>
+<hr>
+<div class="container">
+  <div class="col-md-6 col-xs-6" style="font-family: Catamaran;">
+  <div class="sections" *ngIf="uploaded" id="sections">
+  <h4>for {{num_days}} days</h4>
+  <div class="slidecontainer" *ngIf="loaded">
+      <input (change)="onChange(true)" [(ngModel)]="num_days" type="range" min="5" max="200" value="30" class="slider" id="myRange">
+  </div>
+
+</div>
+</div>
+
+</div>
+<div class="col-md-12 col-xs-12 chart">
+  <ngx-spinner
+        bdColor = "rgba(255,255,255,0.8)"
+        size = "medium"
+        color = "#1a1818"
+        type = "ball-running-dots"
+        opacity = 0.2
+      >
+        <p style="font-size: 15px; color: black"><br><br>forecasting for {{num_days}} days, may take a while</p>
+  </ngx-spinner>   
+  <app-line-chart-h *ngIf="loaded" [chartData]="chartData"></app-line-chart-h>
+</div>
+<br><br><br><br><br><br>
+<div *ngIf="loaded" style="overflow: auto; height: 400px !important">
+  <table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Event</th>
+      <th scope="col">Impact</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody style="max-height: : 300px">
+
+    <tr *ngFor="let impact of impact_data" style=" font-size: 15px">
+      <th scope="row">{{impact.date}}</th>
+      <td style="font-style: italic;">"{{impact.event}}"</td>
+      <td [style.color]="impact.impact >= 0 ? 'green' : 'red'" style="text-align: center; font-weight: 500;">{{impact.impact}}%</td>
+      <td style="font-size: 10px" *ngIf="(impact.date_time >= start_date) && (impact.date_time <= end_date)">
+        <label><input type="checkbox" value="" checked disabled (click)="removeImpact(impact.date)">Applied</label>
+      </td>
+      <td style="font-size: 10px" *ngIf="!((impact.date_time >= start_date) && (impact.date_time <= end_date))">
+        <label><input type="checkbox" value="" disabled (click)="removeImpact(impact.date)">N/A</label>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<hr>
+<div class="container" *ngIf="loaded">
+  <div class="row">
+      
+    <div class="col-md-6 bar-chart">
+      <h6 style="text-align: center;">Mean Average Error</h6>
+      <app-bar-chart-a [chartData]="evalMAE" *ngIf="loaded"></app-bar-chart-a>
+    </div>
+    <div class="col-md-6 bar-chart">
+      <h6 style="text-align: center;">Mean Average Percentage Error</h6>
+      <app-bar-chart-b [chartData]="evalMAPE" *ngIf="loaded"></app-bar-chart-b>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 bar-chart">
+      <h6 style="text-align: center;">Mean Squared Error</h6>
+      <app-bar-chart-c [chartData]="evalMSE" *ngIf="loaded"></app-bar-chart-c>
+    </div>
+    <div class="col-md-6 bar-chart">
+      <h6 style="text-align: center;">Mean Average Log Error</h6>
+      <app-bar-chart-d [chartData]="evalMSLE" *ngIf="loaded"></app-bar-chart-d>
+    </div>
+  </div>
+
+</div>
+<hr>
+<div class="container" *ngIf="loaded">
+  <!-- <ngx-loading [show]="long_forecast_ongoing" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading> -->
+  <div class="row">
+
+    <div class="col-md-7">
+      <button type="button" (click)="doLongForecast()"class="btn btn-primary btn-lg btn-block" style="font-size: 15px">{{button_status}}</button>
+    </div>
+    <div class="col-md-2">
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg" style="font-size: 10px">Days</span>
+        </div>
+          <input [(ngModel)]="long_days" type="number" class="form-control" aria-label="Days" aria-describedby="inputGroup-sizing-sm" style="font-size: 12px">
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg" style="font-size: 10px">Seasonality</span>
+        </div>
+          <input [(ngModel)]="long_seasonality" type="number" class="form-control" aria-label="Seasonality" aria-describedby="inputGroup-sizing-sm" style="font-size: 12px">
+      </div>
+    </div>
+  </div>
+</div> 
+<hr>
+  

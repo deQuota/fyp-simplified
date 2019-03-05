@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-xs-5 desc">
+      <h5>On-Balance Volume Analysis</h5>
+      <hr>
+      <!-- <ui-switch (change)="onChange($event)"></ui-switch> -->
+	<div class="slidecontainer">
+      <input (change)="onChange(true)" [(ngModel)]="windowSize" type="range" min="1" max="200" value="50" class="slider" id="myRange">
+  </div>
+     <h6>Current Window Size: {{windowSize}}</h6>
+  <br>
+  <p>When OBV is rising, it shows that buyers are willing to step in and push the price higher. When OBV is falling, the selling volume is outpacing buying volume, which indicates lower prices.</p>
+
+  <div *ngIf="enable&&loaded">
+        <angular2csv [data]="data" filename="On-Balance Volume Analysis.csv" [options]="options"></angular2csv>
+  </div>
+    </div>
+    <div class="col-md-9 col-xs-7 chart">
+      <ngx-spinner
+        bdColor = "rgba(255,255,255,0.8)"
+        size = "medium"
+        color = "#1a1818"
+        type = "triangle-skew-spin"
+      >
+        <p style="font-size: 15px; color: black"><br><br>Generating graph, may take a while</p>
+      </ngx-spinner>
+      <div *ngIf="enable&&loaded">
+        <app-line-chart-b [chartData]="processedChartData"></app-line-chart-b>
+      </div>
+      <div *ngIf="!enable">
+        <img src="/assets/images/noChart.png" class="img-fluid rounded mx-auto d-block" >
+      </div>
+    </div>
+  </div>
+</div>

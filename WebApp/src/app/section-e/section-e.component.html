@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-xs-5 desc">
+      <h5>MACD Analysis</h5>
+      <hr>
+      <!-- <ui-switch (change)="onChange($event)"></ui-switch> -->
+      <p>Moving Average Convergence Divergence</p>
+      <p>If the indicator is above zero, watch for the MACD to cross above the signal line to buy. If the MACD is below zero, the MACD crossing below the signal line may provide the signal for a possible short trade.</p>
+  <div class="slidecontainer">
+      <input (change)="onChange(true)" [(ngModel)]="n_fast" type="range" min="1" max="200" value="50" class="slider" id="myRange">
+      <h6>n_fast: {{n_fast}}</h6>
+  </div>
+  <div class="slidecontainer">
+      <input (change)="onChange(true)" [(ngModel)]="n_slow" type="range" min="1" max="200" value="50" class="slider" id="myRange">
+      <h6>n_slow: {{n_slow}}</h6>
+  </div>
+  <div *ngIf="enable&&loaded">
+        <angular2csv [data]="data" filename="MACD Analysis.csv" [options]="options"></angular2csv>
+  </div>
+
+    </div>
+    <div class="col-md-9 col-xs-7 chart">
+      <ngx-spinner
+        bdColor = "rgba(255,255,255,0.8)"
+        size = "medium"
+        color = "#1a1818"
+        type = "triangle-skew-spin"
+      >
+        <p style="font-size: 15px; color: black"><br><br>Generating graph, may take a while</p>
+      </ngx-spinner>
+      <div *ngIf="enable&&loaded">
+        <app-line-chart-e [chartData]="processedChartData"></app-line-chart-e>
+      </div>
+      <div *ngIf="!enable">
+        <img src="/assets/images/noChart.png" class="img-fluid rounded mx-auto d-block" >
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+.ct-series-a .ct-bar, .ct-series-a .ct-line, .ct-series-a .ct-point, .ct-series-a .ct-slice-donut {
+  stroke: #20c997;
+  stroke-width: 1px;
+}
+
+/*$colorA: #EEB200;
+$colorB: #96D0FF;
+$colorC: #14A19B;
+$colorD: #7DE0E6;
+$colorE: #E88565;
+$colorF: #9357A9;
+$colorG: #112378;
+$colorH: #C26B6A;
+$colorI: #19AAD1;
+$colorJ: #FF6B61;
+$colorK: #189BA3;
+$colorL: #9C9CDD;
+$colorM: #87DCFA;
+$colorN: #9B8FFF;
+$colorO: #61BFAD;
+$colorP: #178E96;
+$colorQ: #674B7C;*/
+.ct-chart-e.ct-perfect-fourth .ct-chart-line .ct-labels .ct-label.ct-horizontal.ct-end {
+  transform: rotate(-30deg);
+  transform-box: fill-box;
+  transform-origin: 100% 0;
+  text-anchor: end;
+}
+.ct-chart-e.ct-perfect-fourth .ct-chart-line .ct-series-a .ct-line{
+	stroke: black;
+  stroke-width: 1px;
+}
+.ct-chart-e.ct-perfect-fourth .ct-chart-line .ct-series-b .ct-line{
+	stroke: orange;
+  stroke-width: 1px;
+}
+.ct-chart-e.ct-perfect-fourth .ct-chart-line .ct-series-c .ct-line{
+	stroke: #20c997;
+  stroke-width: 2px;
+}
+.ct-chart-e.ct-perfect-fourth .ct-chart-line .ct-series-d .ct-line{
+  stroke: #14A19B;
+  stroke-width: 1px;
+}
+/*.ct-chart-e.ct-perfect-fourth .ct-chart-line .ct-series-e .ct-line{
+  stroke: green;
+  stroke-width: 2px;
+}
+.ct-chart-e.ct-perfect-fourth .ct-chart-line .ct-series-f .ct-line{
+  stroke: red;
+  stroke-width: 2px;
+}*/
+
+#legend-e .ct-legend.ct-legend-line .ct-series-0{
+  color: black;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+}
+#legend-e .ct-legend.ct-legend-line .ct-series-1{
+  color: orange;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+}
+#legend-e .ct-legend.ct-legend-line .ct-series-2{
+  color: #20c997;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+}
+/*#legend-e .ct-legend.ct-legend-line .ct-series-2{
+  color:  #EEB200;
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 10px;
+}*/
+.ct-chart{
+  max-height: 300px;
+}
+.ct-chart-e{
+	max-height: 320px;
+}

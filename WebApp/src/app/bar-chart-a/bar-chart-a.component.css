@@ -1,0 +1,27 @@
+.ct-chart-bar-a{
+	max-height: 200px;
+}
+.ct-series-a .ct-bar{
+	stroke: #f4c63d;
+  stroke-width: 10px;
+}
+.ct-series-b .ct-bar{
+	stroke: black;
+  stroke-width: 10px;
+}
+.ct-series-c .ct-bar{
+	stroke: green;
+  stroke-width: 10px;
+}
+.ct-series-d .ct-bar{
+  stroke: blue;
+  stroke-width: 10px;
+}
+.ct-series-e .ct-bar{
+  stroke: #20c997;
+  stroke-width: 10px;
+}
+.ct-series-f .ct-bar{
+  stroke: blue;
+  stroke-width: 10px;
+}

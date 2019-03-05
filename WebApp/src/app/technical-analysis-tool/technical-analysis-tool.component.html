@@ -1,0 +1,79 @@
+
+<nav class="navbar navbar-dark bg-primary fixed-top" style="z-index: 1">
+  <a class="navbar-brand" href="#">Analysis Tool</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" (click)="genImage()">Get PDF<span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link" href="#">Features</a>
+      <a class="nav-item nav-link" href="#">Pricing</a>
+      <a class="nav-item nav-link disabled" href="#">Disabled</a>
+    </div>
+  </div>
+</nav>
+<div class="login-background-image" [style.height]="uploaded == false ? '1024px' : '500px'">
+        <div class="moto">
+            <h1>Technical Analysis</h1>
+            <div class="sub-moto">
+                <h4>technical analysis tool for the forecasts and also for historical company data</h4>
+            </div>
+        </div>
+<div class="file-uploader">
+    <file-drop headertext="{{(relativePath == 'Drop files here'?'Drop files here':relativePath)}}" (onFileDrop)="dropped($event)" 
+    (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+    </file-drop>
+    <div class="upload-table">
+       
+    </div>
+    <br>
+    <div *ngIf="!uploaded" class="uploading-spinner float-right">
+      <ngx-spinner
+      bdOpacity = 0.1
+      bdColor = "rgba(51,51,51,0)"
+      size = "small"
+      color = "#fff"
+      type = "ball-grid-pulse"
+      fullScreen = "false">
+      </ngx-spinner>
+    </div>
+    <button *ngIf="!uploaded" style="width: 100px" class="btn btn-success float-right" [disabled]="!selectedFile" (click)="upload()">{{buttonStatus}}
+      
+    </button>
+    <button *ngIf="uploaded" style="width: 100px" class="btn btn-success float-right" [disabled]="true">Uploaded
+      
+    </button>
+</div>
+
+</div>
+
+<!-- <div class="sections" *ngIf="!uploaded">
+ <div class="background-image-no-file">
+        <div class="no-file-notice">
+            <h1>Upload your files above</h1>
+        </div>
+      </div>
+</div> -->
+<div class="sections" *ngIf="uploaded" id="sections">
+  <hr>
+  <app-section-a [fileKey]="fileKey"></app-section-a>
+<hr>
+ <app-section-b [fileKey]="fileKey"></app-section-b>
+<hr>
+ <app-section-c [fileKey]="fileKey"></app-section-c>
+<hr>
+ <app-section-d [fileKey]="fileKey"></app-section-d>
+<hr>
+ <app-section-e [fileKey]="fileKey"></app-section-e>
+ <br>
+<hr>
+ <app-section-f [fileKey]="fileKey"></app-section-f>
+<hr>
+<app-section-g [fileKey]="fileKey"></app-section-g>
+<hr>
+</div>
+
+ 
+
+

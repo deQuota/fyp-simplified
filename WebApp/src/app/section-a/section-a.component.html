@@ -1,0 +1,71 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--
+<div class="grid-container">
+
+  <div class="innerbox">
+    <div class="row d-flex h-100">
+
+
+      <div class="col-sm-9">
+
+        <ngx-spinner
+          bdColor = "rgba(231,218,218,0.8)"
+          size = "medium"
+          color = "#1a1818"
+          type = "triangle-skew-spin"
+        >
+          <p style="font-size: 10px; color: black"><br>Generating graphs for first time, may take a while</p>
+        </ngx-spinner>
+        <div *ngIf="enable&&loaded">
+          <app-line-chart-a [chartData]="processedChartData"></app-line-chart-a>
+        </div>
+        <div *ngIf="!enable">
+          <img src="/assets/images/noChart.png">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <ui-switch (change)="onChange($event)"></ui-switch>
+      </div>
+
+    </div>
+  </div>
+</div>-->
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-xs-5 desc">
+      <h5>Moving Average Analysis</h5>
+      <hr>
+      <!-- <ui-switch (change)="onChange($event)"></ui-switch> -->
+	<div class="slidecontainer">
+      <input (change)="onChange(true)" [(ngModel)]="windowSize" type="range" min="1" max="200" value="50" class="slider" id="myRange">
+      <h6>Current Window Size: {{windowSize}}</h6>
+  </div>
+  <p>Moving Average to have a brief idea about the organization's stock price movement</p>
+
+  <div *ngIf="enable&&loaded">
+        <angular2csv [data]="data" filename="Moving Average Analysis.csv" [options]="options"></angular2csv>
+  </div>
+    </div>
+    <div class="col-md-9 col-xs-7 chart">
+      <ngx-spinner
+        bdColor = "rgba(255,255,255,0.8)"
+        size = "medium"
+        color = "#1a1818"
+        type = "triangle-skew-spin"
+      >
+        <p style="font-size: 15px; color: black"><br><br>Generating graph, may take a while</p>
+      </ngx-spinner>
+      <div *ngIf="enable&&loaded">
+        <app-line-chart-a [chartData]="processedChartData"></app-line-chart-a>
+      </div>
+      <div *ngIf="!enable">
+        <img src="/assets/images/noChart.png" class="img-fluid rounded mx-auto d-block" >
+      </div>
+    </div>
+  </div>
+</div>

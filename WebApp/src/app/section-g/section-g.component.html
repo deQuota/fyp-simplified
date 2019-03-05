@@ -1,0 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-xs-5 desc">
+      <h5>Relative Strength Index Analysis</h5>
+      <hr>
+      <!-- <ui-switch (change)="onChange($event)"></ui-switch> -->
+      <p>The most basic use of an RSI is as an overbought and oversold indicator. When RSI moves above 70, the asset is considered overbought and could decline. When the RSI is below 30, the asset is oversold and could rally</p>
+  <div class="slidecontainer">
+      <input (change)="onChange(true)" [(ngModel)]="windowSize" type="range" min="1" max="200" value="50" class="slider" id="myRange">
+      <h6>Current Window Size: {{windowSize}}</h6>
+  </div>
+  <div *ngIf="enable&&loaded">
+        <angular2csv [data]="data" filename="Relative Strength Index Analysis.csv" [options]="options"></angular2csv>
+  </div>
+
+    </div>
+    <div class="col-md-9 col-xs-7 chart">
+      <ngx-spinner
+        bdColor = "rgba(255,255,255,0.8)"
+        size = "medium"
+        color = "#1a1818"
+        type = "triangle-skew-spin"
+      >
+        <p style="font-size: 15px; color: black"><br><br>Generating graph, may take a while</p>
+      </ngx-spinner>
+      <div *ngIf="enable&&loaded">
+        <app-line-chart-g [chartData]="processedChartData"></app-line-chart-g>
+      </div>
+      <div *ngIf="!enable">
+        <img src="/assets/images/noChart.png" class="img-fluid rounded mx-auto d-block" >
+      </div>
+    </div>
+  </div>
+</div>

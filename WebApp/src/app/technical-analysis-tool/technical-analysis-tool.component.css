@@ -1,0 +1,79 @@
+.login-background-image{
+  /*height: 500px;*/
+  background-position: left;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #e2e9ed;
+  font-family: lato;
+  overflow-y: hidden;
+  background-image: url("../../assets/images/login_background.jpg");
+}
+.background-image-no-file h1{
+  font-family: Catamaran;
+    font-weight: bold;
+    line-height: 1;
+    text-align: left;
+    color: #ffffff;
+    position: absolute;
+    font-weight: bold;
+    top: 500px;
+    left: 115px;
+    width: 529px; 
+}
+.no-file-notice{
+  
+}
+.moto {
+  position: absolute;
+  top: 90px;
+  left: 115px;
+  width: 529px; 
+}
+.moto h1 {
+    font-family: Catamaran;
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: left;
+    color: #ffffff;
+     }
+.moto .sub-moto h4 {
+    font-family: Roboto;
+    font-size: 16px;
+    text-align: left;
+    color: #e3e3e3; 
+}
+.file-uploader{
+position: absolute;
+  top: 200px;
+  left: 115px;
+  width: 529px; 
+}
+.uploading-spinner{
+  position: absolute;
+  top: 145px;
+  left: 150px;
+  width: 529px; 
+}
+.content{
+  color: #20c997;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+}
+.file-name{
+  font-family: Catamaran;
+    font-size: 54px;
+    font-weight: bold;
+    line-height: 1;
+    text-align: left;
+    color: #ffffff;
+}
+​.navbar-fixed-top {
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    top: 0;
+}
+
